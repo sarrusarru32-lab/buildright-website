@@ -5,34 +5,39 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Galaxy Planners — Construction & Project Services</title>
   <style>
-    :root{--accent:#d4a800;--muted:#f3f3f3;--bg:#ffffff;--text:#222}
+    :root{--accent:#0b75c9;--muted:#f7f7f7;--bg:#ffffff;--text:#111}
     *{box-sizing:border-box}
-    body{font-family:Inter, system-ui, -apple-system, Roboto, 'Segoe UI', Arial; margin:0; color:var(--text); background:linear-gradient(180deg,#fbfbfb,#fff);}
-    header{display:flex;align-items:center;gap:18px;padding:28px 32px;border-bottom:1px solid #eee;background:transparent}
+    body{font-family:Inter, system-ui, -apple-system, Roboto, 'Segoe UI', Arial; margin:0; color:var(--text); background:linear-gradient(180deg,#fbfbfb,#fff);} 
+    header{display:flex;align-items:flex-start;gap:18px;padding:28px 32px;border-bottom:1px solid #eee;background:transparent;flex-wrap:wrap}
     .logo{display:flex;align-items:center;gap:12px}
-    .logo img{height:68px;width:68px;object-fit:contain;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
-    .brand h1{margin:0;font-size:22px;letter-spacing:1px}
-    .brand p{margin:2px 0 0;color:#666;font-size:13px}
-    nav{margin-left:auto}
+    .logo img{height:80px;width:80px;object-fit:contain;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    .brand{flex:1}
+    .brand h1{margin:0;font-size:40px;letter-spacing:2px;font-weight:800;color:#000}
+    .contacts{display:flex;gap:28px;margin-top:14px}
+    .contact-block{min-width:220px}
+    .contact-block h4{margin:0;font-size:14px;letter-spacing:0.6px}
+    .contact-block p{margin:6px 0 0;color:#333;font-size:13px}
+
+    nav{margin-left:auto;align-self:center}
     nav a{margin-left:16px;text-decoration:none;color:#333;font-weight:600}
 
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;padding:52px 32px;align-items:center}
-    .hero .lead{max-width:720px}
-    .lead h2{font-size:36px;margin:0 0 12px}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;padding:32px;align-items:start}
+    .hero .lead{max-width:720px;padding-top:6px}
+    .lead h2{font-size:28px;margin:0 0 12px}
     .lead p{margin:0 0 18px;color:#444;font-size:16px}
     .cta{display:flex;gap:12px}
-    .btn{padding:12px 18px;border-radius:10px;border:0;background:var(--accent);color:#111;font-weight:700;cursor:pointer}
-    .btn.ghost{background:transparent;border:1px solid #ddd;font-weight:600}
+    .btn{padding:12px 18px;border-radius:10px;border:0;background:var(--accent);color:#fff;font-weight:700;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid #ddd;color:#333;font-weight:600}
 
     .card{background:var(--muted);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
 
-    /* services grid */
-    .services{padding:30px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-    .service{background:#fff;padding:18px;border-radius:12px;border:1px solid #eee;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
-    .service h3{margin:0;font-size:18px}
-    .service p{margin:0;color:#666;font-size:14px}
-    .service .actions{margin-top:auto;display:flex;gap:10px;width:100%}
-    .service button{flex:1;padding:10px;border-radius:8px;border:0;background:linear-gradient(180deg,var(--accent),#b78200);color:#fff;font-weight:700;cursor:pointer}
+    /* services (we undertake list) */
+    .services{padding:10px 32px;display:block}
+    .undertake{display:flex;gap:28px;padding:20px 0;align-items:flex-start;flex-wrap:wrap}
+    .undertake .list{flex:1;min-width:320px}
+    .undertake h3{margin:0 0 12px;font-size:18px}
+    .undertake ul{margin:0;padding-left:20px;color:#222;font-size:16px;line-height:1.6}
+    .undertake li{margin-bottom:8px}
 
     /* project gallery */
     .projects{padding:22px 32px}
@@ -52,18 +57,38 @@
     .thumb-list img{width:72px;height:60px;object-fit:cover;border-radius:6px;cursor:pointer;border:2px solid transparent}
     .thumb-list img.active{border-color:var(--accent)}
 
-    @media(max-width:900px){.hero{grid-template-columns:1fr;padding:28px 16px}.modal .grid{grid-template-columns:1fr}.modal img{height:320px}}
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;padding:28px 16px}
+      .modal .grid{grid-template-columns:1fr}
+      .modal img{height:320px}
+      header{padding:18px 16px}
+      .brand h1{font-size:28px}
+      .contacts{flex-direction:column;gap:8px}
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">
       <img src="https://raw.githubusercontent.com/sarrusarru32-lab/buildright-website/main/Galaxy_Planners_Logo.jpeg" alt="Galaxy Planners Logo">
-      <div class="brand">
-        <h1>Galaxy Planners</h1>
-        <p>Built on Trust — Focused on Quality</p>
+    </div>
+
+    <div class="brand">
+      <h1>GALAXY PLANNERS</h1>
+      <div class="contacts">
+        <div class="contact-block">
+          <h4>M. HAJI KHAN &nbsp;&nbsp; B-TECH CIVIL</h4>
+          <p>Consulting Engineer</p>
+          <p>Cell: +91 73826 64922</p>
+        </div>
+        <div class="contact-block">
+          <h4>S. IRFAN ALI &nbsp;&nbsp; D.C.E</h4>
+          <p>Consulting Engineer</p>
+          <p>Cell: +91 94924 85352</p>
+        </div>
       </div>
     </div>
+
     <nav>
       <a href="#home">Home</a>
       <a href="#services">Services</a>
@@ -84,45 +109,45 @@
 
     <div class="card">
       <h3>Quick Contact</h3>
-      <p>Email: hello@galaxyplanners.example</p>
-      <p>Phone: +91 98765 43210</p>
+      <p>Email: GALAXYPLANNERS1@GMAIL.COM</p>
+      <p>Phone: +91 73826 64922 | +91 94924 85352</p>
       <div style="height:14px"></div>
       <strong>Office</strong>
-      <p style="margin:6px 0 0;color:#666">Address line goes here, City, Country</p>
+      <p style="margin:6px 0 0;color:#666">Near SV Hospital, Kamala Nagar, Anantapur.</p>
     </div>
   </section>
 
   <section id="services" class="services">
-    <!-- Each service card has a button that opens a modal gallery for that service -->
-    <div class="service">
-      <h3>Residential Construction</h3>
-      <p>Villas, apartments, and home renovations with end-to-end project delivery.</p>
-      <div class="actions">
-        <button onclick="openGallery('Residential Construction')">View Images</button>
-      </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0 4px 4px 4px">
+      <h3 style="margin:0">WE UNDERTAKE:</h3>
+      <div style="color:#666;font-weight:700">BUILT ON TRUST — FOCUSED ON QUALITY</div>
     </div>
 
-    <div class="service">
-      <h3>Commercial Buildings</h3>
-      <p>Office spaces, retail fit-outs, and commercial project planning.</p>
-      <div class="actions">
-        <button onclick="openGallery('Commercial Buildings')">View Images</button>
+    <div class="undertake">
+      <div class="list card">
+        <ul>
+          <li>Building Contracts</li>
+          <li>Municipal & Panchayat Plan Approvals</li>
+          <li>Interior & Exterior Designs</li>
+          <li>Construction Plans As Per Vastu</li>
+          <li>Renovation Works</li>
+          <li>MEP Services</li>
+          <li>Facelift Projects</li>
+          <li>Total Station & DGPS Survey Works</li>
+          <li>Valuation & Estimation works</li>
+        </ul>
       </div>
-    </div>
 
-    <div class="service">
-      <h3>Interior Design & Fit-out</h3>
-      <p>Complete interior packages from concept to handover.</p>
-      <div class="actions">
-        <button onclick="openGallery('Interior Design & Fit-out')">View Images</button>
-      </div>
-    </div>
-
-    <div class="service">
-      <h3>Project Management</h3>
-      <p>Cost control, scheduling and quality assurance across projects.</p>
-      <div class="actions">
-        <button onclick="openGallery('Project Management')">View Images</button>
+      <div class="card" style="min-width:280px">
+        <h3 style="margin-top:0">Explore Services</h3>
+        <p style="color:#444;margin-bottom:10px">Click a service to view sample images.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <button class="btn" onclick="openGallery('Building Contracts')">Building Contracts</button>
+          <button class="btn" onclick="openGallery('Municipal & Panchayat Plan Approvals')">Plan Approvals</button>
+          <button class="btn ghost" onclick="openGallery('Interior & Exterior Designs')">Interior & Exterior</button>
+          <button class="btn" onclick="openGallery('Renovation Works')">Renovation Works</button>
+          <button class="btn ghost" onclick="openGallery('MEP Services')">MEP Services</button>
+        </div>
       </div>
     </div>
   </section>
@@ -130,10 +155,10 @@
   <section id="projects" class="projects">
     <h3 style="padding:0 32px">Featured Projects</h3>
     <div class="gallery" style="padding-top:12px">
-      <div class="thumb card"><img src="/mnt/data/WhatsApp Image 2025-10-21 at 6.47.40 PM.jpeg" alt="sample"></div>
-      <div class="thumb card"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23e9e1c4'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Project Sample A</text></svg>" alt="sample"></div>
-      <div class="thumb card"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23dfe6ef'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Project Sample B</text></svg>" alt="sample"></div>
-      <div class="thumb card"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23e8efe8'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Project Sample C</text></svg>" alt="sample"></div>
+      <div class="thumb card"><img src="https://raw.githubusercontent.com/sarrusarru32-lab/buildright-website/main/Galaxy_Planners_Logo.jpeg" alt="sample"></div>
+      <div class="thumb card"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23e9e1c4'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Project A</text></svg>" alt="sample"></div>
+      <div class="thumb card"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23dfe6ef'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Project B</text></svg>" alt="sample"></div>
+      <div class="thumb card"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23e8efe8'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Project C</text></svg>" alt="sample"></div>
     </div>
   </section>
 
@@ -143,8 +168,9 @@
         <strong>Galaxy Planners</strong>
         <div style="margin-top:6px;color:#666">Built on Trust — Focused on Quality</div>
       </div>
-      <div style="color:#666">Email: hello@galaxyplanners.example | Phone: +91 98765 43210</div>
+      <div style="color:#666">Email: GALAXYPLANNERS1@GMAIL.COM | Phone: +91 73826 64922, +91 94924 85352</div>
     </div>
+    <div style="margin-top:8px;color:#666">Address: Near SV Hospital, Kamala Nagar, Anantapur.</div>
   </footer>
 
   <!-- modal gallery UI -->
@@ -172,25 +198,23 @@
   <script>
     // sample images per service. Replace these paths with real project photos.
     const GALLERY = {
-      'Residential Construction': [
-        '/mnt/data/WhatsApp Image 2025-10-21 at 6.47.40 PM.jpeg',
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23f6e8d6'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Residential 1</text></svg>",
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23e2f0e6'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Residential 2</text></svg>"
+      'Building Contracts': [
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23f6e8d6'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Building Contracts</text></svg>",
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23e9eef8'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Contract Site</text></svg>"
       ],
-      'Commercial Buildings': [
-        '/mnt/data/WhatsApp Image 2025-10-21 at 6.47.40 PM.jpeg',
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23e9eef8'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Commercial 1</text></svg>",
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23fff1e6'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Commercial 2</text></svg>"
+      'Municipal & Panchayat Plan Approvals': [
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23fff1e6'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Plan Approvals</text></svg>",
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23e2f0e6'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Govt Office</text></svg>"
       ],
-      'Interior Design & Fit-out': [
-        '/mnt/data/WhatsApp Image 2025-10-21 at 6.47.40 PM.jpeg',
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23f6f2ff'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Interior 1</text></svg>",
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23f0f6ec'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Interior 2</text></svg>"
+      'Interior & Exterior Designs': [
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23f6f2ff'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Interior Design</text></svg>",
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23f0f6ec'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Exterior Design</text></svg>"
       ],
-      'Project Management': [
-        '/mnt/data/WhatsApp Image 2025-10-21 at 6.47.40 PM.jpeg',
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23eef6ff'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>PM 1</text></svg>",
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23fff6e6'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>PM 2</text></svg>"
+      'Renovation Works': [
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23eef6ff'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Renovation</text></svg>"
+      ],
+      'MEP Services': [
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23fff6e6'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>MEP Services</text></svg>"
       ]
     };
 

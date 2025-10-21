@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Galaxy Planners — Construction & Project Services</title>
+  <style>
+    :root{--accent:#d4a800;--muted:#f3f3f3;--bg:#ffffff;--text:#222}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, Roboto, 'Segoe UI', Arial; margin:0; color:var(--text); background:linear-gradient(180deg,#fbfbfb,#fff);}
+    header{display:flex;align-items:center;gap:18px;padding:28px 32px;border-bottom:1px solid #eee;background:transparent}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo img{height:68px;width:68px;object-fit:contain;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+    .brand h1{margin:0;font-size:22px;letter-spacing:1px}
+    .brand p{margin:2px 0 0;color:#666;font-size:13px}
+    nav{margin-left:auto}
+    nav a{margin-left:16px;text-decoration:none;color:#333;font-weight:600}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;padding:52px 32px;align-items:center}
+    .hero .lead{max-width:720px}
+    .lead h2{font-size:36px;margin:0 0 12px}
+    .lead p{margin:0 0 18px;color:#444;font-size:16px}
+    .cta{display:flex;gap:12px}
+    .btn{padding:12px 18px;border-radius:10px;border:0;background:var(--accent);color:#111;font-weight:700;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid #ddd;font-weight:600}
+
+    .card{background:var(--muted);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
+
+    /* services grid */
+    .services{padding:30px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .service{background:#fff;padding:18px;border-radius:12px;border:1px solid #eee;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+    .service h3{margin:0;font-size:18px}
+    .service p{margin:0;color:#666;font-size:14px}
+    .service .actions{margin-top:auto;display:flex;gap:10px;width:100%}
+    .service button{flex:1;padding:10px;border-radius:8px;border:0;background:linear-gradient(180deg,var(--accent),#b78200);color:#fff;font-weight:700;cursor:pointer}
+
+    /* project gallery */
+    .projects{padding:22px 32px}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .thumb{height:140px;background:#ddd;border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+
+    footer{padding:24px 32px;border-top:1px solid #eee;color:#666}
+
+    /* modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,0.5);z-index:50}
+    .modal.open{display:flex}
+    .modal .panel{max-width:960px;width:100%;background:#fff;border-radius:12px;padding:18px;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+    .modal .grid{display:grid;grid-template-columns:1fr 300px;gap:12px}
+    .modal img{width:100%;height:520px;object-fit:cover;border-radius:8px}
+    .thumb-list{display:flex;gap:8px;flex-direction:column}
+    .thumb-list img{width:72px;height:60px;object-fit:cover;border-radius:6px;cursor:pointer;border:2px solid transparent}
+    .thumb-list img.active{border-color:var(--accent)}
+
+    @media(max-width:900px){.hero{grid-template-columns:1fr;padding:28px 16px}.modal .grid{grid-template-columns:1fr}.modal img{height:320px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/mnt/data/WhatsApp Image 2025-10-21 at 6.47.40 PM.jpeg" alt="Galaxy Planners Logo">
+      <div class="brand">
+        <h1>Galaxy Planners</h1>
+        <p>Built on Trust — Focused on Quality</p>
+      </div>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="lead">
+      <h2>Construction, Project Management & Turnkey Solutions</h2>
+      <p>We plan, manage and deliver residential and commercial projects with transparency and quality. Select a service to see related sample images.</p>
+      <div class="cta">
+        <button class="btn" onclick="scrollToSection('services')">Our Services</button>
+        <button class="btn ghost" onclick="scrollToSection('projects')">View Projects</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Quick Contact</h3>
+      <p>Email: hello@galaxyplanners.example</p>
+      <p>Phone: +91 98765 43210</p>
+      <div style="height:14px"></div>
+      <strong>Office</strong>
+      <p style="margin:6px 0 0;color:#666">Address line goes here, City, Country</p>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <!-- Each service card has a button that opens a modal gallery for that service -->
+    <div class="service">
+      <h3>Residential Construction</h3>
+      <p>Villas, apartments, and home renovations with end-to-end project delivery.</p>
+      <div class="actions">
+        <button onclick="openGallery('Residential Construction')">View Images</button>
+      </div>
+    </div>
+
+    <div class="service">
+      <h3>Commercial Buildings</h3>
+      <p>Office spaces, retail fit-outs, and commercial project planning.</p>
+      <div class="actions">
+        <button onclick="openGallery('Commercial Buildings')">View Images</button>
+      </div>
+    </div>
+
+    <div class="service">
+      <h3>Interior Design & Fit-out</h3>
+      <p>Complete interior packages from concept to handover.</p>
+      <div class="actions">
+        <button onclick="openGallery('Interior Design & Fit-out')">View Images</button>
+      </div>
+    </div>
+
+    <div class="service">
+      <h3>Project Management</h3>
+      <p>Cost control, scheduling and quality assurance across projects.</p>
+      <div class="actions">
+        <button onclick="openGallery('Project Management')">View Images</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <h3 style="padding:0 32px">Featured Projects</h3>
+    <div class="gallery" style="padding-top:12px">
+      <div class="thumb card"><img src="/mnt/data/WhatsApp Image 2025-10-21 at 6.47.40 PM.jpeg" alt="sample"></div>
+      <div class="thumb card"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23e9e1c4'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Project Sample A</text></svg>" alt="sample"></div>
+      <div class="thumb card"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23dfe6ef'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Project Sample B</text></svg>" alt="sample"></div>
+      <div class="thumb card"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23e8efe8'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Project Sample C</text></svg>" alt="sample"></div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div style="display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+      <div>
+        <strong>Galaxy Planners</strong>
+        <div style="margin-top:6px;color:#666">Built on Trust — Focused on Quality</div>
+      </div>
+      <div style="color:#666">Email: hello@galaxyplanners.example | Phone: +91 98765 43210</div>
+    </div>
+  </footer>
+
+  <!-- modal gallery UI -->
+  <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <strong id="modalTitle">Gallery</strong>
+        <div style="display:flex;gap:8px">
+          <button class="btn ghost" onclick="closeGallery()">Close</button>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <img id="mainImage" src="" alt="gallery">
+        </div>
+        <div>
+          <div style="font-size:14px;color:#666;margin-bottom:6px">More images</div>
+          <div class="thumb-list" id="thumbList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // sample images per service. Replace these paths with real project photos.
+    const GALLERY = {
+      'Residential Construction': [
+        '/mnt/data/WhatsApp Image 2025-10-21 at 6.47.40 PM.jpeg',
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23f6e8d6'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Residential 1</text></svg>",
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23e2f0e6'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Residential 2</text></svg>"
+      ],
+      'Commercial Buildings': [
+        '/mnt/data/WhatsApp Image 2025-10-21 at 6.47.40 PM.jpeg',
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23e9eef8'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Commercial 1</text></svg>",
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23fff1e6'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Commercial 2</text></svg>"
+      ],
+      'Interior Design & Fit-out': [
+        '/mnt/data/WhatsApp Image 2025-10-21 at 6.47.40 PM.jpeg',
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23f6f2ff'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Interior 1</text></svg>",
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23f0f6ec'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>Interior 2</text></svg>"
+      ],
+      'Project Management': [
+        '/mnt/data/WhatsApp Image 2025-10-21 at 6.47.40 PM.jpeg',
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23eef6ff'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>PM 1</text></svg>",
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23fff6e6'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23666'>PM 2</text></svg>"
+      ]
+    };
+
+    function openGallery(service){
+      const images = GALLERY[service] || [];
+      const modal = document.getElementById('modal');
+      const title = document.getElementById('modalTitle');
+      const main = document.getElementById('mainImage');
+      const thumbs = document.getElementById('thumbList');
+
+      title.textContent = service;
+      thumbs.innerHTML = '';
+      if(images.length===0){
+        main.src = '';
+        main.alt = 'No images';
+      } else {
+        main.src = images[0];
+        main.alt = service + ' image';
+        images.forEach((src, idx)=>{
+          const img = document.createElement('img');
+          img.src = src; img.alt = service + ' '+(idx+1);
+          if(idx===0) img.classList.add('active');
+          img.onclick = ()=>{
+            main.src = src;
+            document.querySelectorAll('#thumbList img').forEach(i=>i.classList.remove('active'));
+            img.classList.add('active');
+          };
+          thumbs.appendChild(img);
+        });
+      }
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    }
+    function closeGallery(){
+      const modal = document.getElementById('modal');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+    }
+    // close on outside click
+    document.getElementById('modal').addEventListener('click', (e)=>{ if(e.target.id==='modal') closeGallery(); });
+
+    function scrollToSection(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+  </script>
+</body>
+</html>

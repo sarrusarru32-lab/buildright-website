@@ -48,25 +48,7 @@
     /* project gallery */
     .projects{padding:22px 32px}
     .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-    .thumb{height:140px;background:#ddd;border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-    .thumb img{width:100%;height:100%;object-fit:cover}
-
-    footer{padding:24px 32px;border-top:1px solid #eee;color:#666}
-
-    /* modal */
-    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,0.5);z-index:50}
-    .modal.open{display:flex}
-    .modal .panel{max-width:960px;width:100%;background:#fff;border-radius:12px;padding:18px;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
-    .modal .grid{display:grid;grid-template-columns:1fr 300px;gap:12px}
-    .modal img{width:100%;height:520px;object-fit:cover;border-radius:8px}
-    .thumb-list{display:flex;gap:8px;flex-direction:column}
-    .thumb-list img{width:72px;height:60px;object-fit:cover;border-radius:6px;cursor:pointer;border:2px solid transparent}
-    .thumb-list img.active{border-color:var(--accent)}
-
-    @media(max-width:900px){
-      .hero{grid-template-columns:1fr;padding:28px 16px}
-      .modal .grid{grid-template-columns:1fr}
-      .modal img{height:320px}
+@@ -64,6 +70,8 @@
       header{padding:18px 16px}
       .brand h1{font-size:28px}
       .contacts{flex-direction:column;gap:8px}
@@ -75,148 +57,27 @@
     }
   </style>
 </head>
-<body>
-  <header>
-    <div class="logo">
-      <img src="https://raw.githubusercontent.com/sarrusarru32-lab/buildright-website/main/Galaxy_Planners_Logo.jpeg" alt="Galaxy Planners Logo">
-    </div>
-
-    <div class="brand">
-      <h1>GALAXY PLANNERS</h1>
-      <div class="contacts">
-        <div class="contact-block">
-          <h4>M. HAJI KHAN &nbsp;&nbsp; B-TECH CIVIL</h4>
-          <p>Consulting Engineer</p>
-          <p>Cell: +91 73826 64922</p>
-        </div>
-        <div class="contact-block">
-          <h4>S. IRFAN ALI &nbsp;&nbsp; D.C.E</h4>
-          <p>Consulting Engineer</p>
-          <p>Cell: +91 94924 85352</p>
-        </div>
-      </div>
-    </div>
-
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <section id="home" class="hero">
-    <div class="lead">
-      <h2>Construction, Project Management & Turnkey Solutions</h2>
-      <p>We plan, manage and deliver residential and commercial projects with transparency and quality. Select a service to see related sample images.</p>
-      <div class="cta">
-        <button class="btn" onclick="scrollToSection('services')">Our Services</button>
-        <button class="btn ghost" onclick="scrollToSection('projects')">View Projects</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Quick Contact</h3>
-      <p>Email: GALAXYPLANNERS1@GMAIL.COM</p>
-      <p>Phone: +91 73826 64922 | +91 94924 85352</p>
-      <div style="height:14px"></div>
-      <strong>Office</strong>
-      <p style="margin:6px 0 0;color:#666">Near SV Hospital, Kamala Nagar, Anantapur.</p>
-    </div>
-  </section>
-
-  <section id="services" class="services">
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:0 4px 4px 4px">
-      <h3 style="margin:0">WE UNDERTAKE:</h3>
-      <div style="color:#666;font-weight:700">BUILT ON TRUST — FOCUSED ON QUALITY</div>
-    </div>
-
-    <div class="undertake">
-      <div class="list card">
-        <ul>
-          <li>Building Contracts</li>
-          <li>Municipal & Panchayat Plan Approvals</li>
-          <li>Interior & Exterior Designs</li>
-          <li>Construction Plans As Per Vastu</li>
-          <li>Renovation Works</li>
-          <li>MEP Services</li>
-          <li>Facelift Projects</li>
-          <li>Total Station & DGPS Survey Works</li>
-          <li>Valuation & Estimation works</li>
+@@ -138,16 +146,10 @@
         </ul>
       </div>
 
+      <div class="card" style="min-width:280px">
       <div class="card" style="min-width:320px">
         <h3 style="margin-top:0">Explore Services</h3>
+        <p style="color:#444;margin-bottom:10px">Click a service to view sample images.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <button class="btn" onclick="openGallery('Building Contracts')">Building Contracts</button>
+          <button class="btn" onclick="openGallery('Municipal & Panchayat Plan Approvals')">Plan Approvals</button>
+          <button class="btn ghost" onclick="openGallery('Interior & Exterior Designs')">Interior & Exterior</button>
+          <button class="btn" onclick="openGallery('Renovation Works')">Renovation Works</button>
+          <button class="btn ghost" onclick="openGallery('MEP Services')">MEP Services</button>
+        </div>
         <p style="color:#444;margin-bottom:10px">Click a tile to view sample images for that service.</p>
         <div id="serviceTiles" class="service-tiles"></div>
       </div>
     </div>
   </section>
-
-  <section id="projects" class="projects">
-    <h3 style="padding:0 32px">Featured Projects</h3>
-    <div class="gallery" style="padding-top:12px">
-      <div class="thumb card"><img src="https://raw.githubusercontent.com/sarrusarru32-lab/buildright-website/main/Galaxy_Planners_Logo.jpeg" alt="sample"></div>
-      <div class="thumb card"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23e9e1c4'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Project A</text></svg>" alt="sample"></div>
-      <div class="thumb card"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23dfe6ef'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Project B</text></svg>" alt="sample"></div>
-      <div class="thumb card"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23e8efe8'/><text x='50%' y='50%' font-size='28' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Project C</text></svg>" alt="sample"></div>
-    </div>
-  </section>
-
-  <footer id="contact">
-    <div style="display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap">
-      <div>
-        <strong>Galaxy Planners</strong>
-        <div style="margin-top:6px;color:#666">Built on Trust — Focused on Quality</div>
-      </div>
-      <div style="color:#666">Email: GALAXYPLANNERS1@GMAIL.COM | Phone: +91 73826 64922, +91 94924 85352</div>
-    </div>
-    <div style="margin-top:8px;color:#666">Address: Near SV Hospital, Kamala Nagar, Anantapur.</div>
-  </footer>
-
-  <!-- modal gallery UI -->
-  <div id="modal" class="modal" role="dialog" aria-hidden="true">
-    <div class="panel">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <strong id="modalTitle">Gallery</strong>
-        <div style="display:flex;gap:8px">
-          <button class="btn ghost" onclick="closeGallery()">Close</button>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div>
-          <img id="mainImage" src="" alt="gallery">
-        </div>
-        <div>
-          <div style="font-size:14px;color:#666;margin-bottom:6px">More images</div>
-          <div class="thumb-list" id="thumbList"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // sample images per service. Replace these paths with real project photos.
-    const GALLERY = {
-      'Building Contracts': [
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23f6e8d6'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Building Contracts</text></svg>",
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23e9eef8'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Contract Site</text></svg>"
-      ],
-      'Municipal & Panchayat Plan Approvals': [
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23fff1e6'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Plan Approvals</text></svg>",
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23e2f0e6'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Govt Office</text></svg>"
-      ],
-      'Interior & Exterior Designs': [
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23f6f2ff'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Interior Design</text></svg>",
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23f0f6ec'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Exterior Design</text></svg>"
-      ],
-      'Renovation Works': [
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23eef6ff'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>Renovation</text></svg>"
-      ],
-      'MEP Services': [
-        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23fff6e6'/><text x='50%' y='50%' font-size='36' dominant-baseline='middle' text-anchor='middle' fill='%23333'>MEP Services</text></svg>"
+@@ -218,6 +220,30 @@
       ]
     };
 
@@ -247,39 +108,7 @@
     function openGallery(service){
       const images = GALLERY[service] || [];
       const modal = document.getElementById('modal');
-      const title = document.getElementById('modalTitle');
-      const main = document.getElementById('mainImage');
-      const thumbs = document.getElementById('thumbList');
-
-      title.textContent = service;
-      thumbs.innerHTML = '';
-      if(images.length===0){
-        main.src = '';
-        main.alt = 'No images';
-      } else {
-        main.src = images[0];
-        main.alt = service + ' image';
-        images.forEach((src, idx)=>{
-          const img = document.createElement('img');
-          img.src = src; img.alt = service + ' '+(idx+1);
-          if(idx===0) img.classList.add('active');
-          img.onclick = ()=>{
-            main.src = src;
-            document.querySelectorAll('#thumbList img').forEach(i=>i.classList.remove('active'));
-            img.classList.add('active');
-          };
-          thumbs.appendChild(img);
-        });
-      }
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden','false');
-    }
-    function closeGallery(){
-      const modal = document.getElementById('modal');
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden','true');
-    }
-    // close on outside click
+@@ -257,6 +283,9 @@
     document.getElementById('modal').addEventListener('click', (e)=>{ if(e.target.id==='modal') closeGallery(); });
 
     function scrollToSection(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
@@ -288,4 +117,5 @@
     buildServiceTiles();
   </script>
 </body>
+</html>
 </html>
